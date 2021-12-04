@@ -11,7 +11,7 @@ def part2(input, step):
     return cnt
 
 def main():
-    with open("day1.txt") as f:
+    with open("data/day1.txt") as f:
         lines = [int(line) for line in f.read().splitlines()]
         print("part1", part1(lines))
         print("part2", part2(lines, 3))
