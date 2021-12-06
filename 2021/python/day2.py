@@ -1,10 +1,11 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class Coordinates:
     position: int = 0
     depth: int = 0
-    aim: int = 0 # part 2
+    aim: int = 0  # part 2
 
 
 def part1(input):
@@ -24,6 +25,7 @@ def part1(input):
     print(coords)
     return abs(coords.depth * coords.position)
 
+
 def part2(input):
     coords = Coordinates()
     for direction in input:
@@ -42,11 +44,13 @@ def part2(input):
     print(coords)
     return abs(coords.depth * coords.position)
 
+
 def main():
     with open("../data/day2.txt", "r") as f:
         lines = f.read().splitlines()
         print(part1(lines))
         print(part2(lines))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

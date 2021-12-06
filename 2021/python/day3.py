@@ -17,8 +17,9 @@ def to_decimal(string):
     res = 0
     for i, bit in enumerate(string[::-1]):
         if int(bit) == 1:
-            res = res + pow(2,i)
+            res = res + pow(2, i)
     return res
+
 
 def part1(input):
     counts = [Counter() for i in range(len(input[0]))]
@@ -37,7 +38,7 @@ def part1(input):
     return gamma_rate * epsilon_rate
 
 
-def find_rating(reports, rating_type,index):
+def find_rating(reports, rating_type, index):
     if len(reports) == 1:
         return to_decimal(reports[0])
     counts = [Counter() for i in range(len(reports[0]))]
@@ -51,8 +52,16 @@ def find_rating(reports, rating_type,index):
                 raise ValueError()
     gamma = "".join([str(count.common()) for count in counts])
     if "oxygen" == rating_type:
-        return find_rating([report for report in reports if report[index] == gamma[index]], rating_type, index + 1)
-    return find_rating([report for report in reports if report[index] != gamma[index]], rating_type, index + 1)
+        return find_rating(
+            [report for report in reports if report[index] == gamma[index]],
+            rating_type,
+            index + 1,
+        )
+    return find_rating(
+        [report for report in reports if report[index] != gamma[index]],
+        rating_type,
+        index + 1,
+    )
 
 
 def part2(input):
@@ -67,5 +76,6 @@ def main():
         print(part1(lines))
         print(part2(lines))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
