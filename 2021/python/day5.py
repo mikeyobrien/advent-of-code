@@ -63,20 +63,14 @@ class LineSegment:
                 for y in range(min(self.y1, self.y2), max(self.y1, self.y2) + 1):
                     diagram[y][x] += 1
         else:  # is diagonal
-            # diagonals [1,1], [-1,-1], [-1, 1], [1, -1]
-            if self.x1 < self.x2 and self.y1 < self.y2:
-                direction = [1, 1]
-            elif self.x1 < self.x2 and self.y1 > self.y2:
-                direction = [1, -1]
-            elif self.x1 > self.x2 and self.y1 < self.y2:
-                direction = [-1, 1]
-            else:
-                direction = [-1, -1]
-            curr = [self.x1, self.y1]
+            dx = 1 if self.x1 < self.x2 else -1
+            dy = 1 if self.y1 < self.y2 else -1
+            curr_x = self.x1
+            curr_y = self.y1
             for _ in range(self.manhattan_distance + 1):
-                diagram[curr[1]][curr[0]] += 1
-                curr[0] += direction[0]
-                curr[1] += direction[1]
+                diagram[curr_y][curr_x] += 1
+                curr_x += dx
+                curr_y += dy
 
 
 def print_diagram(d):
