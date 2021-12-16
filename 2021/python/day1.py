@@ -13,7 +13,7 @@ def part2(input, step):
 
 
 def main():
-    with open("data/day1.txt") as f:
+    with open("../data/day1.txt") as f:
         lines = [int(line) for line in f.read().splitlines()]
         print("part1", part1(lines))
         print("part2", part2(lines, 3))
